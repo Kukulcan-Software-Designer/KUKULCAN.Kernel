@@ -3,8 +3,40 @@
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <LangVersion>latestmajor</LangVersion>
-        <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<RootNamespace>ATLAS.SharedKernel</RootNamespace>
+		<AssemblyName>ATLAS.SharedKernel</AssemblyName>
+		<!-- Generar paquete NuGet automáticamente -->
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<!-- Solo generar en Release -->
+		<GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
+		<!-- Metadatos del paquete -->
+		<PackageId>$(AssemblyName)</PackageId>
+		<Version>$(VersionPrefix)</Version>
+		<Authors>KRATOS Design Systems</Authors>
+		<Company>$(Authors)</Company>
+		<RepositoryUrl>https://github.com/Potestaris/ATLAS.SharedKernel</RepositoryUrl>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Description>
+			ATLAS.SharedKernel is the cross-cutting core of the ATLAS ecosystem.
+			It defines the domain primitives, infrastructure contracts, extensions, 
+			and MediatR pipeline behaviors that every module, and immutable components 
+			that ensure consistency, interoperability, and stability across all 
+			bounded contexts and services.
+		</Description>
+		<PackageTags>atlas;erp;ddd;shared-kernel;database;efcore;infrastructure</PackageTags>
+		<Copyright>Copyright © 2026 Potestaris Software</Copyright>
     </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="..\..\README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
+    </ItemGroup>
 
 </Project>
