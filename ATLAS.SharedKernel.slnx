@@ -1,0 +1,24 @@
+<Solution>
+  <!--
+    ATLAS.SharedKernel — Core shared library for the **ATLAS ERP** platform.
+    Solution format: .slnx (XML, .NET 9+ / Visual Studio 2022 17.12+)
+    Brand: TITÁN Software — Sostenemos lo que construyes.
+  -->
+  <Folder Name="/Documents/" />
+
+  <Folder Name="/Source/">
+    <Project Path="Source/Atlas.SharedKernel.Abstractions/Atlas.SharedKernel.Abstractions.csproj" />
+    <Project Path="Source/Atlas.SharedKernel.Domain/Atlas.SharedKernel.Domain.csproj" />
+    <Project Path="Source/Atlas.SharedKernel.Infrastructure/Atlas.SharedKernel.Infrastructure.csproj" />
+    <Project Path="Source/ATLAS.SharedKernel/ATLAS.SharedKernel.csproj" />
+  </Folder>
+
+  <Folder Name="/Tests/" />
+
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+</Solution>
