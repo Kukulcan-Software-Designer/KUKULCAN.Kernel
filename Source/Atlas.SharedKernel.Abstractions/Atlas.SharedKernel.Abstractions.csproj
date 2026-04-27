@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <LangVersion>latestmajor</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Atlas.SharedKernel.Abstractions</RootNamespace>
+        <AssemblyName>Atlas.SharedKernel.Abstractions</AssemblyName>
+        <Description>Atlas ERP SharedKernel — pure interfaces and contracts. No implementation dependencies.</Description>
+        <PackageTags>atlas;erp;ddd;shared-kernel;abstractions</PackageTags>
+  </PropertyGroup>
+</Project>
