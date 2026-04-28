@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <LangVersion>latestmajor</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>ATLAS.Kernel.Infrastructure</RootNamespace>
+        <AssemblyName>ATLAS.Kernel.Infrastructure</AssemblyName>
+        <Description>Atlas ERP SharedKernel — infrastructure utilities: extensions, pagination, sequential GUID, and MediatR pipeline behaviors.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+        <ProjectReference Include="..\ATLAS.Kernel.Domain\ATLAS.Kernel.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+        <PackageReference Include="MediatR" Version="13.1.0" />
+        <PackageReference Include="FluentValidation" Version="12.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.*" />
+  </ItemGroup>
+</Project>
