@@ -171,8 +171,8 @@ All changes must go through the internal RFC process.
 ## Requirements
 
 - **.NET 10**
-- MediatR 12.*
-- FluentValidation 11.*
+- MediatR 13.*
+- FluentValidation 12.*
 - Microsoft.Extensions.Logging.Abstractions 10.*
 
 ## License

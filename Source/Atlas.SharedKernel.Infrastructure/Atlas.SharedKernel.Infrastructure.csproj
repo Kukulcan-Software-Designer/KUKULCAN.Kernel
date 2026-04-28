@@ -12,8 +12,8 @@
         <ProjectReference Include="..\Atlas.SharedKernel.Domain\Atlas.SharedKernel.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
-        <PackageReference Include="MediatR"                                    Version="12.*" />
-        <PackageReference Include="FluentValidation"                           Version="11.*" />
+        <PackageReference Include="MediatR" Version="13.1.0" />
+        <PackageReference Include="FluentValidation" Version="12.1.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.*" />
   </ItemGroup>
 </Project>
