@@ -5,6 +5,10 @@
     Brand: TITÁN Software — Sostenemos lo que construyes.
   -->
   <Folder Name="/Documents/" />
+  <Folder Name="/Solution Items/.github/" />
+  <Folder Name="/Solution Items/.github/workflows/">
+    <File Path=".github/workflows/delete-merged-branches.yml" />
+  </Folder>
 
   <Folder Name="/Source/">
     <Project Path="Source/Atlas.SharedKernel.Abstractions/Atlas.SharedKernel.Abstractions.csproj" />
