@@ -77,13 +77,6 @@ var spec = new ActiveCustomerSpec().And(new CustomerBySegmentSpec(segmentId: 3))
 var items = await dbContext.Customers.ApplySpecification(spec).ToListAsync(ct);
 ```
 
-## Requirements
-
-- **.NET 10**
-- MediatR 12.*
-- FluentValidation 11.*
-- Microsoft.Extensions.Logging.Abstractions 10.*
-
 ## Recommended Folder Structure
 
 ```
@@ -174,6 +167,13 @@ All changes must go through the internal RFC process.
 3. Add unit tests for new components  
 4. Open a Pull Request with a clear description  
 5. Await architectural review  
+
+## Requirements
+
+- **.NET 10**
+- MediatR 12.*
+- FluentValidation 11.*
+- Microsoft.Extensions.Logging.Abstractions 10.*
 
 ## License
 
