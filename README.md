@@ -186,3 +186,7 @@ This means the software is free to use, modify, and redistribute, provided that:
 - Any derivative work distributed must remain under the same GPL license terms.
 
 For full license terms, see the `LICENSE` file included in this repository.
+
+## Notes
+
+This library is currently in an early stage and may evolve as the Atlas ecosystem grows.
