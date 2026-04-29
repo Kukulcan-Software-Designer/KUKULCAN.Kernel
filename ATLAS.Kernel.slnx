@@ -5,15 +5,8 @@
     Brand: TITÁN Software — Sostenemos lo que construyes.
   -->
   <Folder Name="/Documents/" />
-  <Folder Name="/Solution Items/.github/" />
-  <Folder Name="/Solution Items/.github/workflows/">
-    <File Path=".github/workflows/delete-merged-branches.yml" />
-  </Folder>
 
   <Folder Name="/Source/">
-    <Project Path="Source/Atlas.Kernel.Abstractions/Atlas.Kernel.Abstractions.csproj" DisplayName="ATLAS.Kernel.Abstractions" />
-    <Project Path="Source/Atlas.Kernel.Domain/Atlas.Kernel.Domain.csproj" DisplayName="ATLAS.Kernel.Domain" />
-    <Project Path="Source/Atlas.Kernel.Infrastructure/Atlas.Kernel.Infrastructure.csproj" DisplayName="ATLAS.Kernel.Infrastructure" />
     <Project Path="Source/ATLAS.Kernel/ATLAS.Kernel.csproj" />
   </Folder>
 
@@ -24,5 +17,10 @@
     <File Path="Directory.Build.props" />
     <File Path="LICENSE" />
     <File Path="README.md" />
+  </Folder>
+
+  <Folder Name="/Solution Items/.github/" />
+  <Folder Name="/Solution Items/.github/workflows/">
+    <File Path=".github/workflows/delete-merged-branches.yml" />
   </Folder>
 </Solution>

@@ -85,57 +85,51 @@ ATLAS.Kernel/
 ├── Documentation/
 ├── Source/
 │   |
-│   ├── ATLAS.Kernel/
-│   |   ├──Extensions/
-│   |   └──Primitives/
-│   |      └──Interfaces/
-│   |
-│   ├── ATLAS.Kernel.Abstracttions/
-│   |   └──Interfaces/
-│   |      ├──Domain/
-│   |      └──Infrastructure/
-│   |
-│   ├── ATLAS.Kernel.Domain/
-│   |   ├──Entities/
-│   |   ├──Events/
-│   |   ├──Guards/
-│   |   │  ├──Internal/
-│   |   ├──Result/
-│   |   ├──Specifications/
-│   |   └──ValueObjects/
-│   |
-│   └── ATLAS.Kernel.Infratructure/
-│       ├──Behaviors/
+│   └── ATLAS.Kernel/
 │       ├──Extensions/
-│       ├──Pagination/
-│       └──Primitives/
+│       ├──Primitives/
+│       |  └──Interfaces/
+│       ├── Abstracttions/
+│       │   └──Interfaces/
+│       │      ├──Domain/
+│       |      └──Infrastructure/
+│       ├── Domain/
+│       │   ├──Entities/
+│       │   ├──Events/
+│       │   ├──Guards/
+│       │   │  ├──Internal/
+│       │   ├──Result/
+│       │   ├──Specifications/
+│       │   └──ValueObjects/
+│       └── Infratructure/
+│           ├──Behaviors/
+│           ├──Extensions/
+│           ├──Pagination/
+│           └──Primitives/
 └── Tests/
-    ├── ATLAS.Kernel.Tests/
-    |   ├── Extensions/
-    |   ├── Primitives/
-    |   |   └── Interfaces
-    |   ├── Infrastructure/
-    |   └── TestData/
-    |
-    ├── ATLAS.Kernel.Abstractions.Tests/
-    │   └──Interfaces/
-    │      ├──Domain/
-    │      └──Infrastructure/
-    |
-    ├── ATLAS.Kernel.Domain.Tests/
-    │   ├──Entities/
-    │   ├──Events/
-    │   ├──Guards/
-    │   │  ├──Internal/
-    │   ├──Result/
-    │   ├──Specifications/
-    │   └──ValueObjects/
-    |
-    └── ATLAS.Kernel.Infratructure/
-        ├──Behaviors/
-        ├──Extensions/
-        ├──Pagination/
-        └──Primitives/
+    └── ATLAS.Kernel.Tests/
+        ├── Extensions/
+        ├── Primitives/
+        |   └── Interfaces
+        ├── Infrastructure/
+        ├── TestData/
+        ├── Abstractions/
+        │   └──Interfaces/
+        │      ├──Domain/
+        │      └──Infrastructure/
+        ├── Domain/
+        │   ├──Entities/
+        │   ├──Events/
+        │   ├──Guards/
+        │   │  ├──Internal/
+        │   ├──Result/
+        │   ├──Specifications/
+        │   └──ValueObjects/
+        └── Infratructure/
+            ├──Behaviors/
+            ├──Extensions/
+            ├──Pagination/
+            └──Primitives/
 ```
 
 ## Testing

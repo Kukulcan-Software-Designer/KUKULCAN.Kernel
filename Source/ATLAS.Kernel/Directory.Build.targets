@@ -10,7 +10,7 @@
         <PackageProjectUrl>https://www.kratos.com/ATLAS</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageOutputPath>$(SolutionDir)NuGet\</PackageOutputPath>
-        <PackageTags>atlas;erp;ddd;shared-kernel;database;efcore;infrastructure</PackageTags>
+        <PackageTags>atlas;erp;ddd;kernel;database;efcore;infrastructure</PackageTags>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
         <RepositoryUrl>https://github.com/Potestaris/ATLAS.Kernel</RepositoryUrl>
@@ -19,4 +19,9 @@
 It defines the domain primitives, infrastructure contracts, extensions, and MediatR pipeline behaviors that every module, and immutable components that ensure consistency, interoperability, and stability across all bounded contexts and services.
         </Description>
     </PropertyGroup>
+
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<None Include="$(SolutionDir)LICENSE" Pack="true" PackagePath="\" />
+		<None Include="$(SolutionDir)README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 </Project>
