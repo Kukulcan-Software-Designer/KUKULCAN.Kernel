@@ -1,11 +1,11 @@
-# ATLAS.SharedKernel
+# ATLAS.Kernel
 
-ATLAS.SharedKernel is the cross-cutting core of the ATLAS ecosystem.  
+ATLAS.Kernel is the cross-cutting core of the ATLAS ecosystem.  
 It defines the domain primitives, infrastructure contracts, extensions, and MediatR pipeline behaviors that every module, and immutable components that ensure consistency, interoperability, and stability across all bounded contexts and services.
 
 This repository acts as the single source of truth for shared concepts, preventing duplication, semantic drift, and circular dependencies between modules.
 
-## 🧩 Purpose
+## Purpose
 
 - Unify the ubiquitous language across the ATLAS platform.
 - Provide stable, reusable building blocks for all modules.
@@ -14,15 +14,15 @@ This repository acts as the single source of truth for shared concepts, preventi
 - Establish clear, versioned contracts for internal communication.
 - Serve as the foundation for controlled domain evolution.
 
-## 📦 Projects
+## Projects
 
 | Project                         | Description                                                           | Dependencies                     |
 |---------------------------------|-----------------------------------------------------------------------|----------------------------------|
-| `Atlas.SharedKernel.Abstractions` | Pure interfaces and contracts — zero implementation dependencies       | None                             |
-| `Atlas.SharedKernel.Domain`       | Entities, Value Objects, Events, Result pattern, Specifications, Guards | Abstractions                     |
-| `Atlas.SharedKernel.Infrastructure` | Extensions, Pagination, SequentialGuid, MediatR Behaviors              | Domain + MediatR + FluentValidation |
+| `ATLAS.Kernel.Abstractions` | Pure interfaces and contracts — zero implementation dependencies       | None                             |
+| `ATLAS.Kernel.Domain`       | Entities, Value Objects, Events, Result pattern, Specifications, Guards | Abstractions                     |
+| `ATLAS.Kernel.Infrastructure` | Extensions, Pagination, SequentialGuid, MediatR Behaviors              | Domain + MediatR + FluentValidation |
 
-## 🌳 Entity Hierarchy
+## Entity Hierarchy
 
 ```
 IEntity<TId>
@@ -35,7 +35,7 @@ IEntity<TId>
             └── TenantReferenceEntity<TId>// IMasterData + ITenantAware  ← CustomerStatus (per-tenant)
 ```
 
-### 🗑️ Deletion Rules
+### Deletion Rules
 
 | Base class | Soft-deletable | Tenant-scoped | Notes |
 |---|---|---|---|
@@ -47,17 +47,17 @@ IEntity<TId>
 
 Entities marked with `IImmutable` additionally reject UPDATE and DELETE at infrastructure level.
 
-## 🔄 MediatR Pipeline (recommended order per module)
+## MediatR Pipeline (recommended order per module)
 
 ```
 LoggingBehavior<,>        // 1st — wraps everything, measures total time
 TenantBehavior<,>         // 2nd — rejects requests without a resolved tenant
 ValidationBehavior<,>     // 3rd — runs FluentValidation, short-circuits on failure
 CachingBehavior<,>        // 4th — cache hit/miss for ICacheableRequest queries
-TransactionBehavior<,>    // 5th — wraps ITransactionalCommand in a DB transaction (in Atlas.Database)
+TransactionBehavior<,>    // 5th — wraps ITransactionalCommand in a DB transaction (in ATLAS.Database)
 ```
 
-## 💡 Usage Examples
+## Usage Examples
 
 ```csharp
 // Sequential GUID for SQL Server:
@@ -77,75 +77,62 @@ var spec = new ActiveCustomerSpec().And(new CustomerBySegmentSpec(segmentId: 3))
 var items = await dbContext.Customers.ApplySpecification(spec).ToListAsync(ct);
 ```
 
-## 📋 Requirements
-
-- **.NET 10**
-- MediatR 12.*
-- FluentValidation 11.*
-- Microsoft.Extensions.Logging.Abstractions 10.*
-
-## 📁 Recommended Folder Structure
+## Recommended Folder Structure
 
 ```
-ATLAS.SharedKernel/
+ATLAS.Kernel/
 │
 ├── Documentation/
 ├── Source/
 │   |
-│   ├── ATLAS.SharedKernel/
-│   |   ├──Extensions/
-│   |   └──Primitives/
-│   |      └──Interfaces/
-│   |
-│   ├── ATLAS.SharedKernel.Abstracttions/
-│   |   └──Interfaces/
-│   |      ├──Domain/
-│   |      └──Infrastructure/
-│   |
-│   ├── ATLAS.SharedKernel.Domain/
-│   |   ├──Entities/
-│   |   ├──Events/
-│   |   ├──Guards/
-│   |   │  ├──Internal/
-│   |   ├──Result/
-│   |   ├──Specifications/
-│   |   └──ValueObjects/
-│   |
-│   └── ATLAS.SharedKernel.Infratructure/
-│       ├──Behaviors/
+│   └── ATLAS.Kernel/
 │       ├──Extensions/
-│       ├──Pagination/
-│       └──Primitives/
+│       ├──Primitives/
+│       |  └──Interfaces/
+│       ├── Abstracttions/
+│       │   └──Interfaces/
+│       │      ├──Domain/
+│       |      └──Infrastructure/
+│       ├── Domain/
+│       │   ├──Entities/
+│       │   ├──Events/
+│       │   ├──Guards/
+│       │   │  ├──Internal/
+│       │   ├──Result/
+│       │   ├──Specifications/
+│       │   └──ValueObjects/
+│       └── Infratructure/
+│           ├──Behaviors/
+│           ├──Extensions/
+│           ├──Pagination/
+│           └──Primitives/
 └── Tests/
-    ├── ATLAS.SharedKernel.Tests/
-    |   ├── Extensions/
-    |   ├── Primitives/
-    |   |   └── Interfaces
-    |   ├── Infrastructure/
-    |   └── TestData/
-    |
-    ├── ATLAS.SharedKernel.Abstractions.Tests/
-    │   └──Interfaces/
-    │      ├──Domain/
-    │      └──Infrastructure/
-    |
-    ├── ATLAS.SharedKernel.Domain.Tests/
-    │   ├──Entities/
-    │   ├──Events/
-    │   ├──Guards/
-    │   │  ├──Internal/
-    │   ├──Result/
-    │   ├──Specifications/
-    │   └──ValueObjects/
-    |
-    └── ATLAS.SharedKernel.Infratructure/
-        ├──Behaviors/
-        ├──Extensions/
-        ├──Pagination/
-        └──Primitives/
+    └── ATLAS.Kernel.Tests/
+        ├── Extensions/
+        ├── Primitives/
+        |   └── Interfaces
+        ├── Infrastructure/
+        ├── TestData/
+        ├── Abstractions/
+        │   └──Interfaces/
+        │      ├──Domain/
+        │      └──Infrastructure/
+        ├── Domain/
+        │   ├──Entities/
+        │   ├──Events/
+        │   ├──Guards/
+        │   │  ├──Internal/
+        │   ├──Result/
+        │   ├──Specifications/
+        │   └──ValueObjects/
+        └── Infratructure/
+            ├──Behaviors/
+            ├──Extensions/
+            ├──Pagination/
+            └──Primitives/
 ```
 
-## 🧪 Testing
+## Testing
 
 This repository includes unit tests for:
 
@@ -157,9 +144,9 @@ This repository includes unit tests for:
 
 Tests follow AAA (Arrange–Act–Assert), FluentAssertions, and parameterized test patterns.
 
-## 🔄 Versioning
+## Versioning
 
-ATLAS.SharedKernel uses Semantic Versioning (SemVer):
+ATLAS.Kernel uses Semantic Versioning (SemVer):
 
 - MAJOR — breaking changes  
 - MINOR — backward-compatible features  
@@ -167,7 +154,7 @@ ATLAS.SharedKernel uses Semantic Versioning (SemVer):
 
 All changes must go through the internal RFC process.
 
-## 🤝 Contribution Guidelines
+## Contribution Guidelines
 
 1. Create a branch from `develop`  
 2. Follow commit conventions  
@@ -175,7 +162,25 @@ All changes must go through the internal RFC process.
 4. Open a Pull Request with a clear description  
 5. Await architectural review  
 
-## 🔐 License
+## Requirements
 
-This repository is part of the private ATLAS ecosystem.  
-Licensed under GPL v3. Please credit the original source when redistributing.
+- **.NET 10**
+- MediatR 13.*
+- FluentValidation 12.*
+- Microsoft.Extensions.Logging.Abstractions 10.*
+
+## License
+
+This project is owned and maintained by **Kratos Software Design** and is distributed under the **General Public License (GPL)**.
+
+This means the software is free to use, modify, and redistribute, provided that:
+
+- The original copyright notice is preserved.
+- Proper attribution is given to the original creators.
+- Any derivative work distributed must remain under the same GPL license terms.
+
+For full license terms, see the `LICENSE` file included in this repository.
+
+## Notes
+
+This library is currently in an early stage and may evolve as the Atlas ecosystem grows.
