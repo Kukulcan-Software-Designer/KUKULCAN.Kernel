@@ -423,3 +423,4 @@ FodyWeavers.xsd
 # macOS
 .DS_Store
 ._DS_Store
+/nuget.config
