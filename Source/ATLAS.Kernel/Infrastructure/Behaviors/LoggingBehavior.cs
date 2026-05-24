@@ -34,7 +34,7 @@ public sealed class LoggingBehavior<TRequest, TResponse>
 
     private readonly ILogger<LoggingBehavior<TRequest, TResponse>> _logger;
 
-    /// <summary>Initialises the behavior with the provided logger.</summary>
+    /// <summary>Initializes the behavior with the provided logger.</summary>
     public LoggingBehavior(ILogger<LoggingBehavior<TRequest, TResponse>> logger)
         => _logger = logger;
 
@@ -48,7 +48,7 @@ public sealed class LoggingBehavior<TRequest, TResponse>
         TResponse response;
         try
         {
-            response = await next();
+            response = await next(cancellationToken);
         }
         catch (Exception ex)
         {

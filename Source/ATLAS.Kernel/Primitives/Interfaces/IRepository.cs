@@ -11,14 +11,14 @@ public interface IRepository<TEntity> where TEntity : class
     /// Adds a new entity to the repository for persistence on the next <c>SaveChangesAsync</c> call.
     /// </summary>
     /// <param name="entity">The entity to add. Must not be null.</param>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task AddAsync(TEntity entity, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Adds multiple entities to the repository for persistence on the next <c>SaveChangesAsync</c> call.
     /// </summary>
     /// <param name="entities">The collection of entities to add. Must not be null.</param>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task AddRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -26,21 +26,21 @@ public interface IRepository<TEntity> where TEntity : class
     /// Used for updating existing entities retrieved from an external source.
     /// </summary>
     /// <param name="entity">The entity to attach. Must not be null.</param>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task AttachAsync(TEntity entity, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Marks an entity as modified so that the repository will emit an UPDATE statement on the next save.
     /// </summary>
     /// <param name="entity">The entity to update. Must not be null.</param>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Deletes an entity from the repository (physical delete, not soft delete).
     /// </summary>
     /// <param name="entity">The entity to delete. Must not be null.</param>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default);
     #endregion
 
@@ -48,7 +48,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// <summary>
     /// Returns all entities of the type <typeparamref name="TEntity"/>.
     /// </summary>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     /// <returns>A read-only collection of all entities.</returns>
     Task<IReadOnlyCollection<TEntity>> GetAllAsync(CancellationToken cancellationToken = default);
 
@@ -56,7 +56,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// Retrieves a single entity by its primary key, or <c>null</c> if not found.
     /// </summary>
     /// <param name="id">The primary key value to search for.</param>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     /// <returns>The entity if found, or <c>null</c>.</returns>
     Task<TEntity?> GetByIdAsync(long id, CancellationToken cancellationToken = default);
     #endregion

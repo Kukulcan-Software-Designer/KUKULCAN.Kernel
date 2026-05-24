@@ -37,7 +37,7 @@ public interface ISoftDeletable
     DateTimeOffset? DeletedAt { get; }
 
     /// <summary>
-    /// Gets the identifier (user name or system identifier) of the principal that
+    /// Gets the identifier (username or system identifier) of the principal that
     /// performed the soft-deletion, or <c>null</c> if not deleted.
     /// </summary>
     string? DeletedBy { get; }

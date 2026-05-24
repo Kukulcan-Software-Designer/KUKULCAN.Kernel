@@ -11,12 +11,12 @@ namespace ATLAS.Kernel.Domain.Entities;
 /// lists that apply uniformly to all tenants:
 /// <list type="bullet">
 ///   <item><description>Invoice statuses (Draft, Issued, Paid, Overdue, Void)</description></item>
-///   <item><description>Order statuses (Pending, Confirmed, Shipped, Cancelled)</description></item>
+///   <item><description>Order statuses (Pending, Confirmed, Shipped, Canceled)</description></item>
 ///   <item><description>Payment methods (BankTransfer, Card, SEPA)</description></item>
 /// </list>
 /// </para>
 /// <para>
-/// For reference data that tenants can customise or extend with their own values,
+/// For reference data that tenants can customize or extend with their own values,
 /// use <see cref="TenantReferenceEntity{TId}"/> instead.
 /// </para>
 /// <para>
@@ -50,10 +50,10 @@ public abstract class ReferenceEntity<TId> : AuditableEntityBase<TId>, IMasterDa
     /// <inheritdoc/>
     public bool IsActive { get; private set; } = true;
 
-    /// <summary>EF Core / serialisation constructor.</summary>
+    /// <summary>EF Core / serialization constructor.</summary>
     protected ReferenceEntity() { }
 
-    /// <summary>Initialises with the given identifier.</summary>
+    /// <summary>Initializes with the given identifier.</summary>
     protected ReferenceEntity(TId id) : base(id) { }
 
     /// <inheritdoc/>

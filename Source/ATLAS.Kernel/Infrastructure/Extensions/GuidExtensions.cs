@@ -33,13 +33,13 @@ public static class GuidExtensions
     }
 
     /// <summary>
-    /// Creates a sequential GUID optimised for SQL Server clustered indexes.
+    /// Creates a sequential GUID optimized for SQL Server clustered indexes.
     /// Delegates to <see cref="SequentialGuid.NewSequentialGuid"/>.
     /// </summary>
     public static Guid NewSequential() => SequentialGuid.NewSequentialGuid();
 
     /// <summary>
-    /// Creates a sequential GUID optimised for PostgreSQL, MySQL, MariaDB, and Oracle.
+    /// Creates a sequential GUID optimized for PostgreSQL, MySQL, MariaDB, and Oracle.
     /// Delegates to <see cref="SequentialGuid.NewSequentialGuidAtEnd"/>.
     /// </summary>
     public static Guid NewSequentialAtEnd() => SequentialGuid.NewSequentialGuidAtEnd();

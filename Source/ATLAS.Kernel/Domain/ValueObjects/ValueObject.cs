@@ -71,7 +71,7 @@ public abstract class ValueObject
 
     /// <summary>Determines whether two value objects are equal.</summary>
     public static bool operator ==(ValueObject? left, ValueObject? right) =>
-        left is null ? right is null : left.Equals(right);
+        left?.Equals(right) ?? right is null;
 
     /// <summary>Determines whether two value objects are not equal.</summary>
     public static bool operator !=(ValueObject? left, ValueObject? right) =>

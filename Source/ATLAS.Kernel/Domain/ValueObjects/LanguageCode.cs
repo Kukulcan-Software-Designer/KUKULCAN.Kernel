@@ -22,7 +22,7 @@ public sealed class LanguageCode : ValueObject
         RegexOptions.Compiled,
         TimeSpan.FromMilliseconds(50));
 
-    /// <summary>Gets the full normalised BCP-47 language tag (e.g., <c>es-ES</c>).</summary>
+    /// <summary>Gets the full normalized BCP-47 language tag (e.g., <c>es-ES</c>).</summary>
     public string Value { get; }
 
     /// <summary>Gets the two or three letter language subtag (e.g., <c>es</c>).</summary>

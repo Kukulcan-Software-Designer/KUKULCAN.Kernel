@@ -8,7 +8,7 @@ namespace ATLAS.Kernel.Abstractions.Interfaces.Infrastructure;
 /// <para>
 /// Queries use <see cref="IReadRepository{T,TId}"/> instead of
 /// <see cref="IRepository{T,TId}"/> to prevent accidental mutations and to
-/// benefit from EF Core's <c>AsNoTracking()</c> performance optimisation.
+/// benefit from EF Core's <c>AsNoTracking()</c> performance optimization.
 /// </para>
 /// <para>
 /// This interface deliberately omits <c>Add</c>, <c>Update</c>, and <c>Delete</c>.
