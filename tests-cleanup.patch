@@ -1,0 +1,299 @@
+diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs b/Tests/ATLAS.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs
+--- a/Tests/ATLAS.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs
++++ b/Tests/ATLAS.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs
+@@ -1,0 +1,44 @@
++using System;
++using FluentAssertions;
++using Xunit;
++using ATLAS.Kernel.Extensions;
++
++namespace ATLAS.Kernel.Integration.Tests.Extensions
++{
++    public class ArrayExtensionsIntegrationTests
++    {
++        [Fact]
++        public void Add_AppendsItem_WhenPrependFalse()
++        {
++            var arr = new[] { 1, 2, 3 };
++            var res = arr.Add(4);
++            res.Should().Equal(new[] { 1, 2, 3, 4 });
++        }
++
++        [Fact]
++        public void Add_PrependsItem_WhenPrependTrue()
++        {
++            var arr = new[] { 1, 2, 3 };
++            var res = arr.Add(0, true);
++            res.Should().Equal(new[] { 0, 1, 2, 3 });
++        }
++
++        [Fact]
++        public void Add_ThrowsOnNullTarget()
++        {
++            int[]? arr = null;
++            Action act = () => arr!.Add(1);
++            act.Should().Throw<ArgumentNullException>();
++        }
++
++        [Fact]
++        public void Add_OnEmptyArray_WorksForPrependAndAppend()
++        {
++            var empty = Array.Empty<int>();
++            var appended = empty.Add(1);
++            appended.Should().Equal(new[] { 1 });
++
++            var prepended = empty.Add(1, true);
++            prepended.Should().Equal(new[] { 1 });
++        }
++    }
++}
++
+diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs b/Tests/ATLAS.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs
+--- a/Tests/ATLAS.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs
++++ b/Tests/ATLAS.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs
+@@ -1,0 +1,37 @@
++using System;
++using System.Globalization;
++using FluentAssertions;
++using Xunit;
++using ATLAS.Kernel.Extensions;
++
++namespace ATLAS.Kernel.Integration.Tests.Extensions
++{
++    public class DateExtensionsIntegrationTests
++    {
++        [Fact]
++        public void ParseExactOrDefault_ParsesValidString()
++        {
++            var parsed = DateExtensions.ParseExactOrDefault("20260301", "yyyyMMdd", CultureInfo.InvariantCulture, null);
++            parsed.Should().HaveValue();
++            parsed.Value.Year.Should().Be(2026);
++            parsed.Value.Month.Should().Be(3);
++            parsed.Value.Day.Should().Be(1);
++        }
++
++        [Fact]
++        public void ParseExactOrDefault_ReturnsDefaultOnInvalid()
++        {
++            var def = new DateTime(2000, 1, 1);
++            var parsed = DateExtensions.ParseExactOrDefault("bad", "yyyyMMdd", CultureInfo.InvariantCulture, def);
++            parsed.Should().Be(def);
++        }
++
++        [Fact]
++        public void ToDateFormatWithTimeIso8601_FormatsCorrectly()
++        {
++            var dt = new DateTime(2026, 3, 1, 10, 30, 0, DateTimeKind.Utc);
++            var formatted = dt.ToDateFormatWithTimeIso8601();
++            formatted.Should().StartWith("2026-03-01T10:30:00");
++        }
++    }
++}
++
+diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs b/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs
+--- a/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs
++++ b/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs
+@@ -1,0 +1,117 @@
++using System;
++using System.Threading;
++using System.Threading.Tasks;
++using FluentAssertions;
++using FluentValidation;
++using FluentValidation.Results;
++using Xunit;
++using ATLAS.Kernel.Infrastructure.Behaviors;
++using ATLAS.Kernel.Domain.Result;
++using MediatR;
++
++namespace ATLAS.Kernel.Integration.Tests.Infrastructure.Behaviors
++{
++    public class ValidationBehaviorIntegrationTests
++    {
++        private sealed class SampleRequest : IRequest<Result> { }
++
++        private sealed class PassingValidator : IValidator<SampleRequest>
++        {
++            public FluentValidation.Results.ValidationResult Validate(ValidationContext<SampleRequest> context) => new FluentValidation.Results.ValidationResult();
++            public Task<FluentValidation.Results.ValidationResult> ValidateAsync(ValidationContext<SampleRequest> context, CancellationToken cancellation = default) => Task.FromResult(new FluentValidation.Results.ValidationResult());
++            public IValidatorDescriptor CreateDescriptor() => throw new NotImplementedException();
++        }
++
++        private sealed class FailingValidator : IValidator<SampleRequest>
++        {
++            public FluentValidation.Results.ValidationResult Validate(ValidationContext<SampleRequest> context)
++                => new FluentValidation.Results.ValidationResult(new[] { new ValidationFailure("Name", "Invalid") });
++            public Task<FluentValidation.Results.ValidationResult> ValidateAsync(ValidationContext<SampleRequest> context, CancellationToken cancellation = default)
++                => Task.FromResult(new FluentValidation.Results.ValidationResult(new[] { new ValidationFailure("Name", "Invalid") }));
++            public IValidatorDescriptor CreateDescriptor() => throw new NotImplementedException();
++        }
++
++        [Fact]
++        public async Task When_NoValidators_NextIsInvoked()
++        {
++            var behavior = new ValidationBehavior<SampleRequest, Result>(Array.Empty<IValidator<SampleRequest>>());
++            var invoked = false;
++            RequestHandlerDelegate<Result> Next = () => { invoked = true; return Task.FromResult(Result.Ok()); };
++
++            var result = await behavior.Handle(new SampleRequest(), Next, CancellationToken.None);
++            invoked.Should().BeTrue();
++            result.IsSuccess.Should().BeTrue();
++        }
++
++        [Fact]
++        public async Task When_ValidatorsFail_ReturnsValidationFailure()
++        {
++            var behavior = new ValidationBehavior<SampleRequest, Result>(new[] { new FailingValidator() });
++            RequestHandlerDelegate<Result> Next = () => Task.FromResult(Result.Ok());
++
++            var result = await behavior.Handle(new SampleRequest(), Next, CancellationToken.None);
++
++            result.IsFailure.Should().BeTrue();
++            result.Error.Message.Should().Contain("Validation failed");
++        }
++    }
++}
++
+diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs b/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs
+--- a/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs
++++ b/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs
+@@ -1,0 +1,102 @@
++using System.Linq;
++using FluentAssertions;
++using Xunit;
++using ATLAS.Kernel.Infrastructure.Pagination;
++
++namespace ATLAS.Kernel.Integration.Tests.Infrastructure.Pagination
++{
++    public class PagedResultIntegrationTests
++    {
++        [Fact]
++        public void Create_ComputesPaginationMetadata()
++        {
++            var items = Enumerable.Range(1, 5).ToList();
++            var req = new PaginationRequest { Page = 2, PageSize = 3 };
++            var page = PagedResult<int>.Create(items, totalCount: 8, req);
++
++            page.TotalCount.Should().Be(8);
++            page.Page.Should().Be(2);
++            page.PageSize.Should().Be(3);
++            page.TotalPages.Should().Be(3);
++            page.HasNextPage.Should().BeTrue();
++            page.HasPreviousPage.Should().BeTrue();
++            page.FirstItemIndex.Should().Be(4);
++            page.LastItemIndex.Should().Be(6);
++        }
++
++        [Fact]
++        public void Map_ProjectItems()
++        {
++            var items = new[] { 1, 2 };
++            var req = new PaginationRequest { Page = 1, PageSize = 10 };
++            var page = PagedResult<int>.Create(items, totalCount: 2, req);
++            var mapped = page.Map(i => i.ToString());
++
++            mapped.Items.Should().ContainInOrder("1", "2");
++            mapped.TotalCount.Should().Be(page.TotalCount);
++        }
++
++        [Fact]
++        public void Empty_ReturnsZeroCountsAndIndexes()
++        {
++            var req = new PaginationRequest { Page = 1, PageSize = 10 };
++            var empty = PagedResult<int>.Empty(req);
++
++            empty.Items.Should().BeEmpty();
++            empty.TotalCount.Should().Be(0);
++            empty.TotalPages.Should().Be(0);
++            empty.FirstItemIndex.Should().Be(0);
++            empty.LastItemIndex.Should().Be(0);
++        }
++
++        [Fact]
++        public void Map_Throws_WhenMapperNull()
++        {
++            var items = new[] { 1 };
++            var req = new PaginationRequest { Page = 1, PageSize = 10 };
++            var page = PagedResult<int>.Create(items, totalCount: 1, req);
++
++            Action act = () => page.Map<string>(null!);
++            act.Should().Throw<ArgumentNullException>();
++        }
++    }
++}
++
+diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs b/Tests/ATLAS.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs
+--- a/Tests/ATLAS.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs
++++ b/Tests/ATLAS.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs
+@@ -1,0 +1,72 @@
++using System;
++using FluentAssertions;
++using Xunit;
++using ATLAS.Kernel.Domain.ValueObjects;
++
++namespace ATLAS.Kernel.Integration.Tests.Domain.ValueObjects
++{
++    public class MoneyIntegrationTests
++    {
++        [Fact]
++        public void Create_InvalidAmount_ReturnsFailure()
++        {
++            var res = Money.Create(-1m, "EUR");
++            res.IsFailure.Should().BeTrue();
++        }
++
++        [Fact]
++        public void Create_InvalidCurrency_ReturnsFailure()
++        {
++            var res = Money.Create(10m, "EU");
++            res.IsFailure.Should().BeTrue();
++        }
++
++        [Fact]
++        public void Arithmetic_AddSubtractSameCurrency_Works()
++        {
++            var a = Money.Create(10m, "EUR").Value;
++            var b = Money.Create(5m, "EUR").Value;
++
++            var sum = a + b;
++            sum.Amount.Should().Be(15m);
++            sum.CurrencyCode.Should().Be("EUR");
++
++            var diff = a - b;
++            diff.Amount.Should().Be(5m);
++        }
++
++        [Fact]
++        public void Arithmetic_Throws_OnDifferentCurrencies()
++        {
++            var a = Money.Create(10m, "EUR").Value;
++            var b = Money.Create(5m, "USD").Value;
++
++            Action add = () => { var x = a + b; };
++            add.Should().Throw<InvalidOperationException>().WithMessage("*different currencies*");
++
++            Action compare = () => { var gt = a > b; };
++            compare.Should().Throw<InvalidOperationException>();
++        }
++
++        [Fact]
++        public void Subtract_Throws_WhenResultNegative()
++        {
++            var a = Money.Create(3m, "EUR").Value;
++            var b = Money.Create(5m, "EUR").Value;
++
++            Action act = () => { var r = a - b; };
++            act.Should().Throw<InvalidOperationException>().WithMessage("*result would be negative*");
++        }
++
++        [Fact]
++        public void PercentageAndRound_WorkAsExpected()
++        {
++            var a = Money.Create(100m, "USD").Value;
++            var pct = a.Percentage(12.5m);
++            pct.Amount.Should().BeApproximately(12.5m, 0.000001m);
++
++            var rounded = (a * 1.2345m).Round(2);
++            rounded.ToString().Should().Match("* USD");
++        }
++    }
++}
