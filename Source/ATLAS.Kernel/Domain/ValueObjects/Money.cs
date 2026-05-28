@@ -157,5 +157,5 @@ public sealed class Money : ValueObject
     }
 
     /// <inheritdoc/>
-    public override string ToString() => $"{Amount:0.00} {CurrencyCode}";
+    public override string ToString() => $"{Amount.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)} {CurrencyCode}";
 }

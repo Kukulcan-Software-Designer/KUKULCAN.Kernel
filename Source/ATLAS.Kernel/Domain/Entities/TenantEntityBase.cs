@@ -4,7 +4,7 @@ namespace ATLAS.Kernel.Domain.Entities;
 /// Base class for all tenant-scoped operational entities in ATLAS.
 /// Combines tenant awareness, full auditing, and soft-delete support.
 /// This is the recommended base class for entities that hold business data
-/// belonging to a specific organisation (Customer, Order, Invoice, etc.).
+/// belonging to a specific organization (Customer, Order, Invoice, etc.).
 /// </summary>
 /// <remarks>
 /// <para>

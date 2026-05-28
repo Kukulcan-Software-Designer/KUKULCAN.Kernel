@@ -24,16 +24,16 @@ public interface IRepository<T, in TId> where T : class, IEntity<TId> where TId 
     /// Retrieves an entity by its primary key, or <c>null</c> if not found.
     /// </summary>
     /// <param name="id">The primary key value to search for.</param>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task<T?> GetByIdAsync(TId id, CancellationToken cancellationToken = default);
 
     /// <summary>Returns all entities of type <typeparamref name="T"/> visible to the current tenant.</summary>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken = default);
 
     /// <summary>Schedules a new entity for insertion on the next <c>SaveChangesAsync</c> call.</summary>
     /// <param name="entity">The entity to add. Must not be null.</param>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task AddAsync(T entity, CancellationToken cancellationToken = default);
 
     /// <summary>Marks an existing entity as modified so that EF Core will emit an UPDATE statement.</summary>
@@ -45,6 +45,6 @@ public interface IRepository<T, in TId> where T : class, IEntity<TId> where TId 
     /// More efficient than <see cref="GetByIdAsync"/> when you only need existence.
     /// </summary>
     /// <param name="id">The primary key value to check.</param>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task<bool> ExistsAsync(TId id, CancellationToken cancellationToken = default);
 }

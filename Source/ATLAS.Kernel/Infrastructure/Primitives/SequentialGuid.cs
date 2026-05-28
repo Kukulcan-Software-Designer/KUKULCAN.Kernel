@@ -1,8 +1,8 @@
 namespace ATLAS.Kernel.Infrastructure.Primitives;
 
 /// <summary>
-/// Generates sequential (monotonically increasing) GUIDs optimised for use as
-/// database primary keys. Sequential GUIDs minimise B-tree index fragmentation
+/// Generates sequential (monotonically increasing) GUIDs optimized for use as
+/// database primary keys. Sequential GUIDs minimize B-tree index fragmentation
 /// compared to random GUIDs, significantly improving INSERT performance at scale.
 /// </summary>
 /// <remarks>
@@ -29,7 +29,7 @@ namespace ATLAS.Kernel.Infrastructure.Primitives;
 public static class SequentialGuid
 {
     /// <summary>
-    /// Generates a new sequential GUID optimised for SQL Server clustered indexes.
+    /// Generates a new sequential GUID optimized for SQL Server clustered indexes.
     /// The timestamp is embedded in bytes 10–15 (last 6 bytes of the GUID string).
     /// </summary>
     /// <returns>A <see cref="Guid"/> that sorts later than all previously generated values.</returns>
@@ -51,7 +51,7 @@ public static class SequentialGuid
     }
 
     /// <summary>
-    /// Generates a new sequential GUID optimised for PostgreSQL, MySQL, MariaDB,
+    /// Generates a new sequential GUID optimized for PostgreSQL, MySQL, MariaDB,
     /// and Oracle. The timestamp is embedded at the end of the byte array.
     /// </summary>
     /// <returns>A <see cref="Guid"/> that sorts later than all previously generated values.</returns>

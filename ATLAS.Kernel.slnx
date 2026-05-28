@@ -22,7 +22,9 @@
     <Project Path="Source/ATLAS.Kernel/ATLAS.Kernel.csproj" />
   </Folder>
 
-  <Folder Name="/Tests/" />
+  <Folder Name="/Tests/">
+    <Project Path="Tests/ATLAS.Kernel.Tests/ATLAS.Kernel.Tests.csproj" />
+  </Folder>
 
 
 </Solution>

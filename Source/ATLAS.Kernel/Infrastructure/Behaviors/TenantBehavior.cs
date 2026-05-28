@@ -10,7 +10,7 @@ namespace ATLAS.Kernel.Infrastructure.Behaviors;
 /// <remarks>
 /// <para>
 /// The tenant is resolved by <c>TenantMiddleware</c> before the request enters
-/// the MediatR pipeline. This behavior acts as a second line of defence, rejecting
+/// the MediatR pipeline. This behavior acts as a second line of defense, rejecting
 /// any request that reached the pipeline without a valid tenant context.
 /// </para>
 /// <para>
@@ -33,7 +33,7 @@ public sealed class TenantBehavior<TRequest, TResponse> : IPipelineBehavior<TReq
     private readonly ITenantContext _tenantContext;
     private readonly ILogger<TenantBehavior<TRequest, TResponse>> _logger;
 
-    /// <summary>Initialises the behavior with the tenant context and logger.</summary>
+    /// <summary>Initializes the behavior with the tenant context and logger.</summary>
     public TenantBehavior(ITenantContext tenantContext, ILogger<TenantBehavior<TRequest, TResponse>> logger)
     {
         _tenantContext = tenantContext;
@@ -71,6 +71,6 @@ public sealed class TenantBehavior<TRequest, TResponse> : IPipelineBehavior<TReq
         _logger.LogDebug("[TenantBehavior] Tenant={TenantId} — handling {RequestName}",
             _tenantContext.TenantId, typeof(TRequest).Name);
 
-        return await next();
+        return await next(cancellationToken);
     }
 }

@@ -42,7 +42,7 @@ public abstract class AggregateRoot<TId> : TenantEntityBase<TId>, IDomainEventHo
     /// <inheritdoc/>
     public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
-    /// <summary>EF Core / serialisation constructor.</summary>
+    /// <summary>EF Core / serialization constructor.</summary>
     protected AggregateRoot() { }
 
     /// <summary>Initializes with the given identifier.</summary>

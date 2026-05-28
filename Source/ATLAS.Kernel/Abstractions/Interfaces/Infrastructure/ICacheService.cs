@@ -28,12 +28,12 @@ public interface ICacheService
 
     /// <summary>Stores a value in the cache with an optional expiry duration.</summary>
     /// <param name="key">The cache key. Must be unique within the application scope.</param>
-    /// <param name="value">The value to cache. Must be serialisable.</param>
+    /// <param name="value">The value to cache. Must be serializable.</param>
     /// <param name="expiry">
     /// The time-to-live for this cache entry. When <c>null</c>, the entry
     /// persists until explicitly removed or the cache is flushed.
     /// </param>
-    /// <param name="cancellationToken"></param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task SetAsync<T>(
         string key,
         T value,

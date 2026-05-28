@@ -1,7 +1,7 @@
 namespace ATLAS.Kernel.Abstractions.Interfaces.Infrastructure;
 
 /// <summary>
-/// Provides access to the identity and authorisation context of the authenticated
+/// Provides access to the identity and authorization context of the authenticated
 /// principal executing the current request.
 /// </summary>
 /// <remarks>

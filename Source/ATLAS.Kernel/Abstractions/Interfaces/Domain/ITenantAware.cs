@@ -1,7 +1,7 @@
 namespace ATLAS.Kernel.Abstractions.Interfaces.Domain;
 
 /// <summary>
-/// Marks an entity as belonging to a specific tenant (organisation) in the
+/// Marks an entity as belonging to a specific tenant (organization) in the
 /// multi-tenant ATLAS architecture.
 /// </summary>
 /// <remarks>
@@ -26,7 +26,7 @@ namespace ATLAS.Kernel.Abstractions.Interfaces.Domain;
 public interface ITenantAware
 {
     /// <summary>
-    /// Gets the unique identifier of the tenant (organisation) that owns this entity.
+    /// Gets the unique identifier of the tenant (organization) that owns this entity.
     /// </summary>
     Guid TenantId { get; }
 }

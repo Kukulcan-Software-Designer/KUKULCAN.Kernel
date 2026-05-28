@@ -25,7 +25,7 @@ public sealed class Email : ValueObject
         RegexOptions.Compiled | RegexOptions.IgnoreCase,
         TimeSpan.FromMilliseconds(100));
 
-    /// <summary>Gets the normalised (lowercased) email address string.</summary>
+    /// <summary>Gets the normalized (lowercased) email address string.</summary>
     public string Value { get; }
 
     private Email(string value) => Value = value;
