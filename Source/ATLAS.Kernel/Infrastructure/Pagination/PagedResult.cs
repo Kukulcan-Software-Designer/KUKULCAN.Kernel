@@ -55,10 +55,10 @@ public sealed class PagedResult<T>
     public bool HasPreviousPage => Page > 1;
 
     /// <summary>Gets the 1-based index of the first item on this page (0 when empty).</summary>
-    public long FirstItemIndex => TotalCount == 0 ? 0 : (long)(Page - 1) * PageSize + 1;
+    public long FirstItemIndex => Items.Count == 0 ? 0 : (long)(Page - 1) * PageSize + 1;
 
     /// <summary>Gets the 1-based index of the last item on this page.</summary>
-    public long LastItemIndex => Math.Min((long)Page * PageSize, TotalCount);
+    public long LastItemIndex => Items.Count == 0 ? 0 : Math.Min(FirstItemIndex + Items.Count - 1, TotalCount);
 
     // ── Factory methods ──────────────────────────────────────────────────────
 

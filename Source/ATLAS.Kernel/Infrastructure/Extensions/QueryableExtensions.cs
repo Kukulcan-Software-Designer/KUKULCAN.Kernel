@@ -43,8 +43,8 @@ public static class QueryableExtensions
 
             ParameterExpression param = Expression.Parameter(typeof(T), "x");
             PropertyInfo? property = typeof(T).GetProperty(sortBy,
-                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance
-                                                      | System.Reflection.BindingFlags.IgnoreCase);
+                BindingFlags.Public | BindingFlags.Instance
+                                                      | BindingFlags.IgnoreCase);
 
             if (property is null)
                 return query;

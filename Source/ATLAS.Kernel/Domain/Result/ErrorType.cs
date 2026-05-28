@@ -1,7 +1,7 @@
 namespace ATLAS.Kernel.Domain.Result;
 
 /// <summary>
-/// Categorises the type of error encapsulated in an <see cref="Error"/> value.
+/// Categorizes the type of error encapsulated in an <see cref="Error"/> value.
 /// Used by API middleware to map domain errors to HTTP status codes.
 /// </summary>
 /// <example>

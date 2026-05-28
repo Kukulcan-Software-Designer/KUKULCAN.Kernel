@@ -18,42 +18,46 @@ namespace ATLAS.Kernel.Extensions;
 /// </example>
 public static class DateExtensions
 {
-    /// <summary>
-    /// Converts a nullable <see cref="DateTime"/> to ISO 8601 format (yyyyMMdd),
-    /// or returns an empty string if the value is <c>null</c>.
-    /// </summary>
     /// <param name="date">The date value or <c>null</c>.</param>
-    public static string ToDateFormat(this DateTime? date)
+    extension(DateTime? date)
     {
-        return date?.ToString("yyyyMMdd", CultureInfo.InvariantCulture) ?? string.Empty;
+        /// <summary>
+        /// Converts a nullable <see cref="DateTime"/> to ISO 8601 format (yyyyMMdd),
+        /// or returns an empty string if the value is <c>null</c>.
+        /// </summary>
+        public string ToDateFormat()
+        {
+            return date?.ToString("yyyyMMdd", CultureInfo.InvariantCulture) ?? string.Empty;
+        }
+
+        /// <summary>
+        /// Converts a nullable <see cref="DateTime"/> to ISO 8601 format with time (yyyyMMddHHmmss),
+        /// or returns an empty string if the value is <c>null</c>.
+        /// </summary>
+        public string ToDateFormatWithTime()
+        {
+            return date?.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture) ?? string.Empty;
+        }
     }
 
-    /// <summary>
-    /// Converts a nullable <see cref="DateTime"/> to ISO 8601 format with time (yyyyMMddHHmmss),
-    /// or returns an empty string if the value is <c>null</c>.
-    /// </summary>
-    /// <param name="date">The date value or <c>null</c>.</param>
-    public static string ToDateFormatWithTime(this DateTime? date)
-    {
-        return date?.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture) ?? string.Empty;
-    }
-
-    /// <summary>
-    /// Converts a <see cref="DateTime"/> to ISO 8601 format with time (yyyyMMddHHmmss).
-    /// </summary>
     /// <param name="date">The date value.</param>
-    public static string ToDateFormatWithTime(this DateTime date)
+    extension(DateTime date)
     {
-        return date.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
-    }
+        /// <summary>
+        /// Converts a <see cref="DateTime"/> to ISO 8601 format with time (yyyyMMddHHmmss).
+        /// </summary>
+        public string ToDateFormatWithTime()
+        {
+            return date.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+        }
 
-    /// <summary>
-    /// Converts a <see cref="DateTime"/> to ISO 8601 UTC format (yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z').
-    /// </summary>
-    /// <param name="date">The date value.</param>
-    public static string ToDateFormatWithTimeIso8601(this DateTime date)
-    {
-        return date.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", CultureInfo.InvariantCulture);
+        /// <summary>
+        /// Converts a <see cref="DateTime"/> to ISO 8601 UTC format (yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z').
+        /// </summary>
+        public string ToDateFormatWithTimeIso8601()
+        {
+            return date.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", CultureInfo.InvariantCulture);
+        }
     }
 
     /// <summary>

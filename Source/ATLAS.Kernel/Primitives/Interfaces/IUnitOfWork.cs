@@ -41,31 +41,31 @@ public interface IUnitOfWork : IDisposable, IAsyncDisposable
     /// Persists all pending changes tracked by the underlying <c>DbContext</c>
     /// to the database.
     /// </summary>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     /// <returns>The number of state entries written to the database.</returns>
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Begins a new explicit database transaction.
     /// </summary>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task BeginTransactionAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Commits the current explicit transaction.
     /// </summary>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task CommitTransactionAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Rolls back the current explicit transaction, discarding all pending changes.
     /// </summary>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task RollbackTransactionAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Ends the current explicit transaction (commits if no rollback occurred).
     /// </summary>
-    /// <param name="cancellationToken">Propagates notification that the operation should be cancelled.</param>
+    /// <param name="cancellationToken">Propagates notification that the operation should be canceled.</param>
     Task EndTransactionAsync(CancellationToken cancellationToken = default);
 }

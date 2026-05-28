@@ -44,7 +44,7 @@ public sealed class PhoneNumber : ValueObject
         return new PhoneNumber(normalised);
     }
 
-    /// <summary>Gets the country dialling code prefix (e.g., <c>+34</c> for Spain).</summary>
+    /// <summary>Gets the country dialing code prefix (e.g., <c>+34</c> for Spain).</summary>
     public string CountryCode
     {
         get

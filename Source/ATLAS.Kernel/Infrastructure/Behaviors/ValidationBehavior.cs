@@ -57,7 +57,7 @@ public sealed class ValidationBehavior<TRequest, TResponse>
     /// <inheritdoc/>
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        if (!_validators.Any()) return await next();
+        if (!_validators.Any()) return await next(cancellationToken);
 
         var ctx = new ValidationContext<TRequest>(request);
         FluentValidation.Results.ValidationResult[] results = await Task.WhenAll(_validators.Select(v => v.ValidateAsync(ctx, cancellationToken)));

@@ -46,10 +46,10 @@ public abstract class MasterEntity<TId> : AuditableEntityBase<TId>, IMasterData,
     /// <inheritdoc/>
     public bool IsActive { get; private set; } = true;
 
-    /// <summary>EF Core / serialisation constructor.</summary>
+    /// <summary>EF Core / serialization constructor.</summary>
     protected MasterEntity() { }
 
-    /// <summary>Initialises with the given identifier.</summary>
+    /// <summary>Initializes with the given identifier.</summary>
     protected MasterEntity(TId id) : base(id) { }
 
     /// <inheritdoc/>
