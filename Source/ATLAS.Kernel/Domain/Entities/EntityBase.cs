@@ -38,8 +38,7 @@ namespace ATLAS.Kernel.Domain.Entities;
 /// }
 /// </code>
 /// </example>
-public abstract class EntityBase<TId> : IEntity<TId>
-    where TId : notnull
+public abstract class EntityBase<TId> : IEntity<TId> where TId : notnull
 {
     /// <summary>Gets the unique identifier of this entity.</summary>
     public TId Id { get; protected init; } = default!;
@@ -65,9 +64,12 @@ public abstract class EntityBase<TId> : IEntity<TId>
     /// <inheritdoc/>
     public override bool Equals(object? obj)
     {
-        if (obj is null || obj.GetType() != GetType()) return false;
-        if (ReferenceEquals(this, obj)) return true;
+        if (obj is null || obj.GetType() != GetType())
+            return false;
+        if (ReferenceEquals(this, obj))
+            return true;
         var other = (EntityBase<TId>)obj;
+
         return EqualityComparer<TId>.Default.Equals(Id, other.Id);
     }
 
@@ -76,10 +78,8 @@ public abstract class EntityBase<TId> : IEntity<TId>
         HashCode.Combine(GetType(), Id);
 
     /// <summary>Determines whether two entities are equal by identity.</summary>
-    public static bool operator ==(EntityBase<TId>? left, EntityBase<TId>? right) =>
-        left?.Equals(right) ?? right is null;
+    public static bool operator ==(EntityBase<TId>? left, EntityBase<TId>? right) => left?.Equals(right) ?? right is null;
 
     /// <summary>Determines whether two entities are not equal by identity.</summary>
-    public static bool operator !=(EntityBase<TId>? left, EntityBase<TId>? right) =>
-        !(left == right);
+    public static bool operator !=(EntityBase<TId>? left, EntityBase<TId>? right) => !(left == right);
 }
