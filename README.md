@@ -1,7 +1,7 @@
-# ATLAS.Kernel
+# KUKULCAN.Kernel
 
-ATLAS.Kernel is the cross-cutting core of the ATLAS ecosystem.  
-It defines the domain primitives, infrastructure contracts, extensions, and MediatR pipeline behaviors that every module, and immutable components that ensure consistency, interoperability, and stability across all bounded contexts and services.
+KUKULCAN.Kernel is the cross-cutting core of the "Kukulcán Software Design" application ecosystem.
+It defines the domain primitives, infrastructure contracts, extensions, and MediatR pipeline behaviors used by each module, as well as the immutable components that ensure consistency, interoperability, and stability across all defined contexts and services.
 
 This repository acts as the single source of truth for shared concepts, preventing duplication, semantic drift, and circular dependencies between modules.
 
@@ -18,21 +18,21 @@ This repository acts as the single source of truth for shared concepts, preventi
 
 | Project                         | Description                                                           | Dependencies                     |
 |---------------------------------|-----------------------------------------------------------------------|----------------------------------|
-| `ATLAS.Kernel.Abstractions` | Pure interfaces and contracts — zero implementation dependencies       | None                             |
-| `ATLAS.Kernel.Domain`       | Entities, Value Objects, Events, Result pattern, Specifications, Guards | Abstractions                     |
-| `ATLAS.Kernel.Infrastructure` | Extensions, Pagination, SequentialGuid, MediatR Behaviors              | Domain + MediatR + FluentValidation |
+| `KUKULCAN.Kernel.Abstractions`    | Pure interfaces and contracts — zero implementation dependencies       | None                             |
+| `KUKULCAN.Kernel.Domain`          | Entities, Value Objects, Events, Result pattern, Specifications, Guards | Abstractions                     |
+| `KUKULCAN.Kernel.Infrastructure`  | Extensions, Pagination, SequentialGuid, MediatR Behaviors              | Domain + MediatR + FluentValidation |
 
 ## Entity Hierarchy
 
 ```
 IEntity<TId>
-└── EntityBase<TId>                      // Id + structural equality
-      └── AuditableEntityBase<TId>       // + CreatedAt/By, UpdatedAt/By
-            ├── TenantEntityBase<TId>    // + TenantId + ISoftDeletable  ← operational data
-            │     └── AggregateRoot<TId> // + Domain Events              ← aggregate roots
-            ├── MasterEntity<TId>        // IMasterData + IActivatable   ← Countries, Currencies
-            ├── ReferenceEntity<TId>     // IMasterData + IActivatable   ← InvoiceStatus (global)
-            └── TenantReferenceEntity<TId>// IMasterData + ITenantAware  ← CustomerStatus (per-tenant)
+└── EntityBase<TId>                         // Id + structural equality
+      └── AuditableEntityBase<TId>          // + CreatedAt/By, UpdatedAt/By
+            ├── TenantEntityBase<TId>       // + TenantId + ISoftDeletable  ← operational data
+            │     └── AggregateRoot<TId>    // + Domain Events              ← aggregate roots
+            ├── MasterEntity<TId>           // IMasterData + IActivatable   ← Countries, Currencies
+            ├── ReferenceEntity<TId>        // IMasterData + IActivatable   ← InvoiceStatus (global)
+            └── TenantReferenceEntity<TId>  // IMasterData + ITenantAware   ← CustomerStatus (per-tenant)
 ```
 
 ### Deletion Rules
@@ -54,7 +54,7 @@ LoggingBehavior<,>        // 1st — wraps everything, measures total time
 TenantBehavior<,>         // 2nd — rejects requests without a resolved tenant
 ValidationBehavior<,>     // 3rd — runs FluentValidation, short-circuits on failure
 CachingBehavior<,>        // 4th — cache hit/miss for ICacheableRequest queries
-TransactionBehavior<,>    // 5th — wraps ITransactionalCommand in a DB transaction (in ATLAS.Database)
+TransactionBehavior<,>    // 5th — wraps ITransactionalCommand in a DB transaction (in KUKUKCAN.Database)
 ```
 
 ## Usage Examples
@@ -80,12 +80,12 @@ var items = await dbContext.Customers.ApplySpecification(spec).ToListAsync(ct);
 ## Recommended Folder Structure
 
 ```
-ATLAS.Kernel/
+KUKULCAN.Kernel/
 │
 ├── Documentation/
 ├── Source/
 │   |
-│   └── ATLAS.Kernel/
+│   └── KUKULCAN.Kernel/
 │       ├──Extensions/
 │       ├──Primitives/
 │       |  └──Interfaces/
@@ -107,7 +107,7 @@ ATLAS.Kernel/
 │           ├──Pagination/
 │           └──Primitives/
 └── Tests/
-    └── ATLAS.Kernel.Tests/
+    └── KUKUKCAN.Kernel.Tests/
         ├── Extensions/
         ├── Primitives/
         |   └── Interfaces
@@ -146,7 +146,7 @@ Tests follow AAA (Arrange–Act–Assert), FluentAssertions, and parameterized t
 
 ## Versioning
 
-ATLAS.Kernel uses Semantic Versioning (SemVer):
+KUKULCAN.Kernel uses Semantic Versioning (SemVer):
 
 - MAJOR — breaking changes  
 - MINOR — backward-compatible features  
@@ -171,7 +171,7 @@ All changes must go through the internal RFC process.
 
 ## License
 
-This project is owned and maintained by **Kratos Software Design** and is distributed under the **General Public License (GPL)**.
+This project is owned and maintained by **KUKULCAN Software Design** and is distributed under the **General Public License (GPL)**.
 
 This means the software is free to use, modify, and redistribute, provided that:
 
