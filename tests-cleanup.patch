@@ -1,13 +1,13 @@
-diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs b/Tests/ATLAS.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs
---- a/Tests/ATLAS.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs
-+++ b/Tests/ATLAS.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs
+diff --git a/Tests/KUKULCAN.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs b/Tests/KUKULCAN.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs
+--- a/Tests/KUKULCAN.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs
++++ b/Tests/KUKULCAN.Kernel.Integration.Tests/Extensions/ArrayExtensionsIntegrationTests.cs
 @@ -1,0 +1,44 @@
 +using System;
 +using FluentAssertions;
 +using Xunit;
-+using ATLAS.Kernel.Extensions;
++using KUKULCAN.Kernel.Extensions;
 +
-+namespace ATLAS.Kernel.Integration.Tests.Extensions
++namespace KUKULCAN.Kernel.Integration.Tests.Extensions
 +{
 +    public class ArrayExtensionsIntegrationTests
 +    {
@@ -48,17 +48,17 @@ diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Extensions/ArrayExtensionsInte
 +    }
 +}
 +
-diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs b/Tests/ATLAS.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs
---- a/Tests/ATLAS.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs
-+++ b/Tests/ATLAS.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs
+diff --git a/Tests/KUKULCAN.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs b/Tests/KUKULCAN.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs
+--- a/Tests/KUKULCAN.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs
++++ b/Tests/KUKULCAN.Kernel.Integration.Tests/Extensions/DateExtensionsIntegrationTests.cs
 @@ -1,0 +1,37 @@
 +using System;
 +using System.Globalization;
 +using FluentAssertions;
 +using Xunit;
-+using ATLAS.Kernel.Extensions;
++using KUKULCAN.Kernel.Extensions;
 +
-+namespace ATLAS.Kernel.Integration.Tests.Extensions
++namespace KUKULCAN.Kernel.Integration.Tests.Extensions
 +{
 +    public class DateExtensionsIntegrationTests
 +    {
@@ -90,9 +90,9 @@ diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Extensions/DateExtensionsInteg
 +    }
 +}
 +
-diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs b/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs
---- a/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs
-+++ b/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs
+diff --git a/Tests/KUKULCAN.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs b/Tests/KUKULCAN.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs
+--- a/Tests/KUKULCAN.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs
++++ b/Tests/KUKULCAN.Kernel.Integration.Tests/Infrastructure/Behaviors/ValidationBehaviorIntegrationTests.cs
 @@ -1,0 +1,117 @@
 +using System;
 +using System.Threading;
@@ -101,11 +101,11 @@ diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Behaviors/Valid
 +using FluentValidation;
 +using FluentValidation.Results;
 +using Xunit;
-+using ATLAS.Kernel.Infrastructure.Behaviors;
-+using ATLAS.Kernel.Domain.Result;
++using KUKULCAN.Kernel.Infrastructure.Behaviors;
++using KUKULCAN.Kernel.Domain.Result;
 +using MediatR;
 +
-+namespace ATLAS.Kernel.Integration.Tests.Infrastructure.Behaviors
++namespace KUKULCAN.Kernel.Integration.Tests.Infrastructure.Behaviors
 +{
 +    public class ValidationBehaviorIntegrationTests
 +    {
@@ -153,16 +153,16 @@ diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Behaviors/Valid
 +    }
 +}
 +
-diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs b/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs
---- a/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs
-+++ b/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs
+diff --git a/Tests/KUKULCAN.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs b/Tests/KUKULCAN.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs
+--- a/Tests/KUKULCAN.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs
++++ b/Tests/KUKULCAN.Kernel.Integration.Tests/Infrastructure/Pagination/PagedResultIntegrationTests.cs
 @@ -1,0 +1,102 @@
 +using System.Linq;
 +using FluentAssertions;
 +using Xunit;
-+using ATLAS.Kernel.Infrastructure.Pagination;
++using KUKULCAN.Kernel.Infrastructure.Pagination;
 +
-+namespace ATLAS.Kernel.Integration.Tests.Infrastructure.Pagination
++namespace KUKULCAN.Kernel.Integration.Tests.Infrastructure.Pagination
 +{
 +    public class PagedResultIntegrationTests
 +    {
@@ -221,16 +221,16 @@ diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Infrastructure/Pagination/Page
 +    }
 +}
 +
-diff --git a/Tests/ATLAS.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs b/Tests/ATLAS.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs
---- a/Tests/ATLAS.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs
-+++ b/Tests/ATLAS.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs
+diff --git a/Tests/KUKULCAN.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs b/Tests/KUKULCAN.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs
+--- a/Tests/KUKULCAN.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs
++++ b/Tests/KUKULCAN.Kernel.Integration.Tests/Domain/ValueObjects/MoneyIntegrationTests.cs
 @@ -1,0 +1,72 @@
 +using System;
 +using FluentAssertions;
 +using Xunit;
-+using ATLAS.Kernel.Domain.ValueObjects;
++using KUKULCAN.Kernel.Domain.ValueObjects;
 +
-+namespace ATLAS.Kernel.Integration.Tests.Domain.ValueObjects
++namespace KUKULCAN.Kernel.Integration.Tests.Domain.ValueObjects
 +{
 +    public class MoneyIntegrationTests
 +    {
