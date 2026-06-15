@@ -13,7 +13,7 @@
         <PackageTags>atlas;erp;ddd;kernel;database;efcore;infrastructure</PackageTags>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-        <RepositoryUrl>https://github.com/Potestaris/KUKULCAN.Kernel</RepositoryUrl>
+        <RepositoryUrl>https://github.com/KUKULCAN-DEV/KUKULCAN.Kernel</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <Description>KUKULCAN.Kernel is the cross-cutting core of the "Kukulcán Software Design" application ecosystem.
             It defines the domain primitives, infrastructure contracts, extensions, and MediatR pipeline behaviors used by each module, as well as the immutable components that ensure consistency, interoperability, and stability across all defined contexts and services.
