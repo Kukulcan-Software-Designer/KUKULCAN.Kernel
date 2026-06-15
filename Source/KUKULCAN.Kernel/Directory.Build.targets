@@ -1,0 +1,27 @@
+<Project>
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
+        <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
+        <PackageId>$(AssemblyName)</PackageId>
+        <Version>$(VersionPrefix)</Version>
+        <Authors>KUKULCAN Design Systems</Authors>
+        <Company>KUKULCAN Design Systems</Company>
+        <Copyright>GPL 2026 KUKULCAN Software Design</Copyright>
+        <PackageProjectUrl>https://www.KUKULCAN.com/ATLAS</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageOutputPath>$(SolutionDir)NuGet\</PackageOutputPath>
+        <PackageTags>atlas;erp;ddd;kernel;database;efcore;infrastructure</PackageTags>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+        <RepositoryUrl>https://github.com/Potestaris/KUKULCAN.Kernel</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <Description>KUKULCAN.Kernel is the cross-cutting core of the "Kukulcán Software Design" application ecosystem.
+            It defines the domain primitives, infrastructure contracts, extensions, and MediatR pipeline behaviors used by each module, as well as the immutable components that ensure consistency, interoperability, and stability across all defined contexts and services.
+        </Description>
+    </PropertyGroup>
+
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<None Include="$(SolutionDir)LICENSE" Pack="true" PackagePath="\" />
+		<None Include="$(SolutionDir)README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+</Project>
