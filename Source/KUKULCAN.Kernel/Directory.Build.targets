@@ -13,6 +13,7 @@
         <PackageTags>Kernel;ddd;kernel;database;efcore;infrastructure</PackageTags>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+        <PackageReleaseNotes></PackageReleaseNotes>
         <RepositoryUrl>https://github.com/Kukulcan-Software-Designer/KUKULCAN.Kernel</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <Description>KUKULCAN.Kernel is the cross-cutting core of the "Kukulcán Software Designer" application ecosystem.
