@@ -3,7 +3,7 @@ using KUKULCAN.Kernel.Abstractions.Interfaces.Domain;
 namespace KUKULCAN.Kernel.Domain.Events;
 
 /// <summary>
-/// Abstract base class for all domain events in ATLAS.
+/// Abstract base class for all domain events in KUKULCAN applications.
 /// Domain events are raised within an aggregate root to signal that something
 /// meaningful has occurred in the domain. They are dispatched in-process via
 /// MediatR's <c>IPublisher</c> immediately after <c>SaveChangesAsync</c> succeeds.

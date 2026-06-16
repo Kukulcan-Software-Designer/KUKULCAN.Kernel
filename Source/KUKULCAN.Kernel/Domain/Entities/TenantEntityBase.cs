@@ -3,7 +3,7 @@ using KUKULCAN.Kernel.Abstractions.Interfaces.Domain;
 namespace KUKULCAN.Kernel.Domain.Entities;
 
 /// <summary>
-/// Base class for all tenant-scoped operational entities in ATLAS.
+/// Base class for all tenant-scoped operational entities in KUKULCAN applications.
 /// Combines tenant awareness, full auditing, and soft-delete support.
 /// This is the recommended base class for entities that hold business data
 /// belonging to a specific organization (Customer, Order, Invoice, etc.).

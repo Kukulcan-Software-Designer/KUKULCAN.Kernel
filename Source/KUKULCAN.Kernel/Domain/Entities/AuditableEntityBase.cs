@@ -7,7 +7,7 @@ namespace KUKULCAN.Kernel.Domain.Entities;
 /// who created and last modified the entity, and when.
 /// </summary>
 /// <remarks>
-/// The <c>AuditSaveChangesInterceptor</c> in <c>ATLAS.Database</c> sets these
+/// The <c>AuditSaveChangesInterceptor</c> in <c>KUKULCAN.Kernel.Database</c> sets these
 /// properties automatically on every save operation via <c>ICurrentUser</c> and
 /// <c>IDateTimeProvider</c>. Application code should never assign them manually.
 /// </remarks>

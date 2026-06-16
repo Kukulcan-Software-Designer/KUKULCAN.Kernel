@@ -6,7 +6,7 @@
         <Version>$(VersionPrefix)</Version>
         <Authors>KUKULCAN Design Systems</Authors>
         <Company>KUKULCAN Design Systems</Company>
-        <Copyright>GPL 2026 KUKULCAN Software Design</Copyright>
+        <Copyright>GPL 2026 KUKULCAN Software Designer</Copyright>
         <PackageProjectUrl>https://www.KUKULCAN.com/ATLAS</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageOutputPath>$(SolutionDir)NuGet\</PackageOutputPath>
@@ -15,7 +15,7 @@
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
         <RepositoryUrl>https://github.com/KUKULCAN-DEV/KUKULCAN.Kernel</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <Description>KUKULCAN.Kernel is the cross-cutting core of the "Kukulcán Software Design" application ecosystem.
+        <Description>KUKULCAN.Kernel is the cross-cutting core of the "Kukulcán Software Designer" application ecosystem.
             It defines the domain primitives, infrastructure contracts, extensions, and MediatR pipeline behaviors used by each module, as well as the immutable components that ensure consistency, interoperability, and stability across all defined contexts and services.
         </Description>
     </PropertyGroup>
