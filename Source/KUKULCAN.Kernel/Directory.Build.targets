@@ -7,7 +7,7 @@
         <Authors>Kukulcán Software Designer</Authors>
         <Company>Kukulcán Software Designer</Company>
         <Copyright>GPL 2026 Kukulcán Software Designer</Copyright>
-        <PackageProjectUrl>https://www.kukulcan.com/Software/Kernel</PackageProjectUrl>
+        <PackageProjectUrl>https://www.kukulcan.mx/Software/Kernel</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageOutputPath>$(SolutionDir)NuGet\</PackageOutputPath>
         <PackageTags>kukulcan;kernel</PackageTags>
