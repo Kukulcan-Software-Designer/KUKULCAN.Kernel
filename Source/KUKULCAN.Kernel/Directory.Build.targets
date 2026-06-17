@@ -10,7 +10,7 @@
         <PackageProjectUrl>https://www.kukulcan.com/Software/Kernel</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageOutputPath>$(SolutionDir)NuGet\</PackageOutputPath>
-        <PackageTags>Kernel;ddd;kernel;database;efcore;infrastructure</PackageTags>
+        <PackageTags>kukulcan;kernel</PackageTags>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
         <PackageReleaseNotes></PackageReleaseNotes>
