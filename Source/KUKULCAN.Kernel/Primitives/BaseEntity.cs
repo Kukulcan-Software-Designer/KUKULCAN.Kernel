@@ -15,5 +15,4 @@ public abstract class BaseEntity
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long Id { get; set; }
-
 }
