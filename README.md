@@ -171,7 +171,7 @@ All changes must go through the internal RFC process.
 
 ## License
 
-This project is owned and maintained by **KUKULCAN Software Design** and is distributed under the **General Public License (GPL)**.
+This project is owned and maintained by **KUKULCAN Software Designer** and is distributed under the **General Public License (GPL)**.
 
 This means the software is free to use, modify, and redistribute, provided that:
 

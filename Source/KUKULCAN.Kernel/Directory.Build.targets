@@ -4,18 +4,19 @@
         <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
         <PackageId>$(AssemblyName)</PackageId>
         <Version>$(VersionPrefix)</Version>
-        <Authors>Kukulcan Software Designer</Authors>
-        <Company>Kukulcan Software Designer</Company>
-        <Copyright>GPL 2026 Kukulcan Software Designer</Copyright>
+        <Authors>Kukulcán Software Designer</Authors>
+        <Company>Kukulcán Software Designer</Company>
+        <Copyright>GPL 2026 Kukulcán Software Designer</Copyright>
         <PackageProjectUrl>https://www.kukulcan.com/Software/Kernel</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageOutputPath>$(SolutionDir)NuGet\</PackageOutputPath>
         <PackageTags>kukulcan;kernel</PackageTags>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+        <PackageReleaseNotes></PackageReleaseNotes>
         <RepositoryUrl>https://github.com/Kukulcan-Software-Designer/KUKULCAN.Kernel</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <Description>KUKULCAN.Kernel is the cross-cutting core of the "Kukulcán Software Design" application ecosystem.
+        <Description>KUKULCAN.Kernel is the cross-cutting core of the "Kukulcán Software Designer" application ecosystem.
             It defines the domain primitives, infrastructure contracts, extensions, and MediatR pipeline behaviors used by each module, as well as the immutable components that ensure consistency, interoperability, and stability across all defined contexts and services.
         </Description>
     </PropertyGroup>
